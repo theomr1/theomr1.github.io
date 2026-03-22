@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Théo Maurin — Développeur</title>
+  <meta name="description" content="Portfolio de Théo Maurin, développeur logiciel basé à Agen. ERP, data engineering, interfaces web." />
+
+  <!-- Open Graph (Facebook, LinkedIn, iMessage, WhatsApp…) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.theo-maurin.fr" />
+  <meta property="og:title" content="Théo Maurin — Développeur" />
+  <meta property="og:description" content="Portfolio de Théo Maurin, développeur logiciel basé à Agen. ERP, data engineering, interfaces web." />
+  <meta property="og:image" content="https://www.theo-maurin.fr/og-image.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.theo-maurin.fr" />
+  <meta name="twitter:title" content="Théo Maurin — Développeur" />
+  <meta name="twitter:description" content="Portfolio de Théo Maurin, développeur logiciel basé à Agen. ERP, data engineering, interfaces web." />
+  <meta name="twitter:image" content="https://www.theo-maurin.fr/og-image.png" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f2ed;
+      --bg2: #eeeae2;
+      --white: #fffdf9;
+      --text: #1a1714;
+      --text2: #4a453f;
+      --text3: #9a9188;
+      --border: #ddd9d0;
+      --blob1: rgba(248, 123, 173, 0.22);
+      --blob2: rgba(91, 141, 246, 0.18);
+      --blob3: rgba(255, 213, 79, 0.25);
+      --blob4: rgba(38, 198, 176, 0.18);
+      --blob5: rgba(167, 139, 250, 0.2);
+      --blob6: rgba(255, 112, 67, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── BLOBS ─── */
+    .blob-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(72px);
+      will-change: transform;
+    }
+    .b1 { width: 540px; height: 540px; background: var(--blob1); top: -120px; left: -140px; animation: bf 13s ease-in-out infinite alternate; }
+    .b2 { width: 440px; height: 440px; background: var(--blob2); top: 35vh; right: -100px;  animation: bf 16s ease-in-out infinite alternate; animation-delay: -4s; }
+    .b3 { width: 380px; height: 380px; background: var(--blob3); top: 65vh; left: 18%;     animation: bf 11s ease-in-out infinite alternate; animation-delay: -7s; }
+    .b4 { width: 480px; height: 480px; background: var(--blob4); top: 110vh; right: 8%;    animation: bf 14s ease-in-out infinite alternate; animation-delay: -2s; }
+    .b5 { width: 360px; height: 360px; background: var(--blob5); top: 170vh; left: -70px;  animation: bf 12s ease-in-out infinite alternate; animation-delay: -9s; }
+    .b6 { width: 500px; height: 500px; background: var(--blob6); top: 230vh; right: 12%;   animation: bf 17s ease-in-out infinite alternate; animation-delay: -1s; }
+    .b7 { width: 420px; height: 420px; background: var(--blob1); top: 290vh; left: 28%;    animation: bf 10s ease-in-out infinite alternate; animation-delay: -5s; }
+    .b8 { width: 360px; height: 360px; background: var(--blob2); top: 350vh; right: -60px; animation: bf 13s ease-in-out infinite alternate; animation-delay: -8s; }
+    @keyframes bf {
+      from { transform: scale(1) translate(0,0); }
+      to   { transform: scale(1.1) translate(28px, 22px); }
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.1rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(245,242,237,0.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem;
+      letter-spacing: -0.01em; color: var(--text);
+    }
+    .nav-logo span { color: #f87bad; }
+    a.nav-logo { background-image: none; color: var(--text); text-decoration: none; }
+    a.nav-logo:hover { color: var(--text); background-image: none; text-decoration: none; }
+    .nav-links { display: flex; gap: 0.4rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; color: var(--text2);
+      text-decoration: none; padding: 0.35rem 0.9rem; border-radius: 100px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { background: var(--text); color: var(--bg); }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 0 5rem;
+    }
+    .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--white); border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.35rem 1rem 0.35rem 0.5rem; font-size: 0.78rem; font-weight: 500;
+      color: var(--text2); margin-bottom: 1.5rem; box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    }
+    .dot-green {
+      width: 8px; height: 8px; border-radius: 50%; background: #26c6b0;
+      animation: gp 2s ease-in-out infinite;
+    }
+    @keyframes gp {
+      0%,100% { box-shadow: 0 0 0 0 rgba(38,198,176,0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(38,198,176,0); }
+    }
+    h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.2rem;
+    }
+    .h1-grad {
+      display: block;
+      background: linear-gradient(130deg, #f87bad 0%, #ff7043 55%, #ffd54f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--text2); max-width: 440px;
+      margin-bottom: 2.5rem; line-height: 1.8;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem;
+      padding: 0.75rem 1.6rem; border-radius: 100px; text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s; cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
+    .btn-dark   { background: var(--text); color: var(--bg); }
+    .btn-light  { background: var(--white); color: var(--text); border: 1.5px solid var(--border); }
+
+    /* hero card */
+    .hero-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 22px; padding: 1.8rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08); width: 210px; flex-shrink: 0;
+    }
+    .hc-title {
+      font-family: 'DM Mono', monospace; font-weight: 500; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 1.1rem;
+    }
+    .stat-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
+    .stat-row:last-child { margin-bottom: 0; }
+    .sn {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: 2rem; line-height: 1;
+    }
+    .sl { font-size: 0.76rem; color: var(--text3); line-height: 1.35; }
+    .c-pink { color: #f87bad; } .c-blue { color: #5b8df6; } .c-teal { color: #26c6b0; }
+
+    /* ─── SECTION HEADER ─── */
+    .sh { display: flex; align-items: center; gap: 1rem; margin-bottom: 3.5rem; }
+    .sh-chip {
+      font-family: 'DM Mono', monospace; font-weight: 500; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.3rem 1rem; border-radius: 100px;
+      background: var(--text); color: var(--bg);
+    }
+    .sh-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── ABOUT ─── */
+    #about { padding: 7rem 0; }
+    .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: start; }
+    .at h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(1.4rem, 2.2vw, 1.8rem); letter-spacing: -0.01em;
+      margin-bottom: 1.5rem; line-height: 1.3;
+    }
+    .at h2 em {
+      font-style: italic; font-weight: 400; color: #ff7043;
+    }
+    .at p { color: var(--text2); font-size: 0.95rem; margin-bottom: 1rem; }
+    .at p strong { color: var(--text); font-weight: 600; }
+    .hl {
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-left: 3px solid #26c6b0; border-radius: 12px;
+      padding: 1rem 1.2rem; margin-top: 1.5rem;
+      font-size: 0.87rem; color: var(--text2);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .hl-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.15rem; }
+
+    .sg { margin-bottom: 1.4rem; }
+    .sg-title {
+      font-family: 'DM Mono', monospace; font-weight: 400; font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.55rem;
+    }
+    .pw { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .pill {
+      font-size: 0.76rem; font-weight: 500; padding: 0.25rem 0.85rem;
+      border-radius: 100px; border: 1.5px solid transparent; transition: transform 0.15s;
+    }
+    .pill:hover { transform: scale(1.07); }
+    .p-pink   { background: rgba(248,123,173,0.12); border-color: rgba(248,123,173,0.35); color: #b83d6e; }
+    .p-blue   { background: rgba(91,141,246,0.12);  border-color: rgba(91,141,246,0.35);  color: #2a55bb; }
+    .p-teal   { background: rgba(38,198,176,0.12);  border-color: rgba(38,198,176,0.35);  color: #168070; }
+    .p-orange { background: rgba(255,112,67,0.12);  border-color: rgba(255,112,67,0.35);  color: #b03010; }
+    .p-purple { background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.35); color: #5530b0; }
+    .p-yellow { background: rgba(255,213,79,0.2);   border-color: rgba(180,140,0,0.3);    color: #7a5800; }
+
+    /* ─── PROJECTS ─── */
+    #projects { padding: 7rem 0; }
+    .pg { display: flex; flex-direction: column; gap: 1.4rem; }
+    .pc {
+      background: var(--white); border: 1px solid var(--border); border-radius: 22px;
+      padding: 2rem; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 0.8rem;
+      transition: transform 0.25s cubic-bezier(.25,.46,.45,.94), box-shadow 0.25s;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05); position: relative; overflow: hidden;
+    }
+    .pc::after {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      transition: opacity 0.3s; border-radius: 22px; pointer-events: none;
+    }
+    .pc-p::after { background: linear-gradient(135deg, rgba(248,123,173,0.08) 0%, transparent 60%); }
+    .pc-b::after { background: linear-gradient(135deg, rgba(91,141,246,0.08) 0%, transparent 60%); }
+    .pc-t::after { background: linear-gradient(135deg, rgba(38,198,176,0.08) 0%, transparent 60%); }
+    .pc:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .pc:hover::after { opacity: 1; }
+    .pc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .p-icon {
+      width: 46px; height: 46px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .pi-p { background: rgba(248,123,173,0.15); }
+    .pi-b { background: rgba(91,141,246,0.15); }
+    .pi-t { background: rgba(38,198,176,0.15); }
+    .p-arr {
+      width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--text3);
+      transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .pc:hover .p-arr { border-color: var(--text); background: var(--text); color: var(--bg); transform: rotate(45deg); }
+    .p-num { font-family: 'DM Mono', monospace; font-weight: 400; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
+    .p-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; line-height: 1.3; }
+    .p-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.65; flex: 1; }
+    .p-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 100px; align-self: flex-start; }
+    .pt-p { background: rgba(248,123,173,0.15); color: #b83d6e; }
+    .pt-b { background: rgba(91,141,246,0.15);  color: #2a55bb; }
+    .pt-t { background: rgba(38,198,176,0.15);  color: #168070; }
+
+
+    /* ─── CONTACT ─── */
+    #contact { padding: 7rem 0 5rem; }
+    .cb {
+      background: var(--white); border: 1px solid var(--border); border-radius: 28px;
+      padding: 4rem; text-align: center;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.07); position: relative; overflow: hidden;
+    }
+    .cb::before {
+      content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 220px;
+      background: radial-gradient(ellipse, rgba(91,141,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cb h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem); letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .cb h2 em {
+      font-style: italic; font-weight: 400;
+      background: linear-gradient(135deg, #5b8df6, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cb p { color: var(--text2); font-size: 0.95rem; max-width: 400px; margin: 0 auto 2.5rem; }
+    .cb-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 1.8rem 0; background: var(--bg); }
+    .fi { display: flex; justify-content: space-between; align-items: center; }
+    .fc { font-size: 0.78rem; color: var(--text3); }
+    .fm { font-size: 0.78rem; color: var(--text3); display: flex; align-items: center; gap: 0.4rem; }
+    .fh { color: #f87bad; }
+
+    /* ─── Reveal ─── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: 0.08s; } .rd2 { transition-delay: 0.16s; }
+    .rd3 { transition-delay: 0.24s; } .rd4 { transition-delay: 0.32s; }
+
+    @media (max-width: 720px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pg { grid-template-columns: 1fr; }
+      .pc.wide { flex-direction: column; grid-column: span 1; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 0.2rem; }
+      .cb { padding: 2.5rem 1.5rem; }
+    }
+
+    a {
+  color: var(--text);
+  text-decoration: underline dotted 0.1em;
+  background-image: linear-gradient(135deg, #f87bad, #ff7043);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  padding-bottom: 1px;
+  transition: background-size 0.3s ease, color 0.2s;
+}
+
+a:hover {
+  background-size: 100% 1.5px;
+  color: #ff7043;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+
+  <div class="blob-layer" id="blobLayer">
+    <div class="blob b1" data-speed="0.06"></div>
+    <div class="blob b2" data-speed="0.10"></div>
+    <div class="blob b3" data-speed="0.07"></div>
+    <div class="blob b4" data-speed="0.09"></div>
+    <div class="blob b5" data-speed="0.05"></div>
+    <div class="blob b6" data-speed="0.08"></div>
+    <div class="blob b7" data-speed="0.11"></div>
+    <div class="blob b8" data-speed="0.06"></div>
+  </div>
+
+  <nav>
+    <a href="#" class="nav-logo">Théo MAURIN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Profil</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-badge">📍 Localisé à Toulouse</div>
+            <h1>Développeur,<br><span class="h1-grad">Théo MAURIN.</span></h1>
+            <p class="hero-sub">
+              Petit site afin de me présenter un petit peu... Ainsi que montrer mes créations. 
+            </p>
+            <div class="hero-ctas">
+              <a href="#projects" class="btn btn-dark">Voir mes projets →</a>
+              <a href="https://www.theo-maurin.fr/cv/" target="_blank" class="btn btn-light">Mon CV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="sh reveal">
+          <span class="sh-chip">Profil</span>
+          <div class="sh-line"></div>
+        </div>
+        <div class="about-grid">
+          <div class="at reveal">
+            <h2>Qui <em>suis-je</em> ?</h2>
+            <ul>
+            <p>Je suis un étudiant <em>Toulousain</em> d'origine Paloise.</p>
+            <p>Actuellement en alternance en tant que développeur chez <a href="https://www.semware.fr" target="_blank">Semware</a>.</p>
+            <p>Egalement en M2 MIAGE IPM de l'université <a href="https://miage.ut-capitole.fr/" target="_blank">Toulouse 1 Capitole</a>.</p>
+            <p>-> De signe astro Lion 🦁</p>
+            </ul>
+          </div>
+          <div class="reveal rd2">
+             <img src="https://www.theo-maurin.fr/cv/img/photo_cv.png" alt="Photo de profil de Théo Maurin" style="width:100%; border-radius: 18px; object-fit: cover; box-shadow: 0 8px 32px rgba(0,0,0,0.1);" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="sh reveal">
+          <span class="sh-chip">Projets</span>
+          <div class="sh-line"></div>
+        </div>
+        <div class="pg">
+
+          <a href="https://www.theo-maurin.fr/test-personnalite/" target="_blank" class="pc pc-p reveal">
+            <div class="pc-top">
+              <div class="p-icon pi-p">🧠</div>
+              <div class="p-arr">↗</div>
+            </div>
+            <div class="p-num">01 — Test de personnalité</div>
+            <div class="p-title">Test PCM</div>
+            <div class="p-desc"><em>A l'aide de 7 questions, identifiez le vrai "Vous".</em> <br/>Site fait après un module à la fac pour faire passer le test facilement à mes proches :)</div>
+            <span class="p-tag pt-p">Connaissance de soi</span>
+          </a>
+
+          <a href="https://www.theo-maurin.fr/cours-integration-donnees/" target="_blank" class="pc pc-b reveal rd1">
+            <div class="pc-top">
+              <div class="p-icon pi-b">📊</div>
+              <div class="p-arr">↗</div>
+            </div>
+            <div class="p-num">02 — Cours d'intégration de données</div>
+            <div class="p-title">Cours d'intégration</div>
+            <div class="p-desc">Regroupement des modules à réviser pour des exams. Le but était de pouvoir réviser facilement et de manière intuitive.</div>
+            <span class="p-tag pt-b">Education</span>
+          </a>
+
+          <a href="https://www.theo-maurin.fr/cv/" target="_blank" class="pc pc-t reveal rd2">
+            <div class="pc-top">
+              <div class="p-icon pi-t">📄</div>
+              <div class="p-arr">↗</div>
+            </div>
+            <div class="p-num">03 — CV</div>
+            <div class="p-title">CV en ligne</div>
+            <div class="p-desc">Je sais qu'on ne peut pas compter ça comme un projet mais pour l'instant le voici ici. Je l'ai fait en HTML avec pour objectif d'avoir une version imprimable. Comme ça, je veux générer le PDF directement depuis le site.</div>
+            <span class="p-tag pt-t">Professionnel</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="cb reveal">
+          <h2>Mon profil vous <em>intéresse ?</em></h2>
+          <p>Pour plus d'informations je vous laisse consulter mon CV. (aussi dispo en anglais pour les anglophones)</p>
+          <div class="cb-ctas">
+            <a href="https://www.theo-maurin.fr/cv/" target="_blank" class="btn btn-dark">Voir mon CV →</a>
+            <a href="#projects" class="btn btn-light">Explorer les projets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="fi">
+        <span class="fc">Fait par Théo avec Claude</span>
+        <a href="https://github.com/theomr1" target="_blank" class="fc" style="display:flex; align-items:center; gap:0.4rem;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          theomr1
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Scroll parallax ───
+    const blobs = document.querySelectorAll('.blob[data-speed]');
+
+    function updateBlobs(scrollY, mouseX, mouseY) {
+      blobs.forEach((b, i) => {
+        const sp = parseFloat(b.dataset.speed);
+        const mx = mouseX !== null ? (mouseX / window.innerWidth  - 0.5) * (i % 3 + 1) * 10 : 0;
+        const my = mouseY !== null ? (mouseY / window.innerHeight - 0.5) * (i % 3 + 1) * 10 : 0;
+        b.style.transform = `translateY(${scrollY * sp + my}px) translateX(${mx}px)`;
+      });
+    }
+
+    let lastMX = null, lastMY = null;
+
+    window.addEventListener('scroll', () => {
+      updateBlobs(window.scrollY, lastMX, lastMY);
+    }, { passive: true });
+
+    document.addEventListener('mousemove', e => {
+      lastMX = e.clientX; lastMY = e.clientY;
+      updateBlobs(window.scrollY, lastMX, lastMY);
+    });
+
+    // ─── Reveal ───
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
